@@ -6,6 +6,8 @@ import Navbar from './components/Navbar';
 import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Donate from './pages/Donate';
+import Collections from './pages/Collections';
 import AuthProvider from './components/AuthProvider';
 
 
@@ -19,7 +21,9 @@ class App extends Component {
           <Switch>
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
+            <PrivateRoute path="/donate" component={Donate} />
             <PrivateRoute path="/private" component={Private} />
+            <PrivateRoute path="/collections" component={Collections} />
           </Switch>
         </div>
       </AuthProvider>
