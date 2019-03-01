@@ -9,7 +9,20 @@ import Login from './pages/Login';
 import Donate from './pages/Donate';
 import Collections from './pages/Collections';
 import AuthProvider from './components/AuthProvider';
+import firebase from 'firebase';
+import Profile from './pages/Profile';
+import './App.css';
+require('dotenv').config()
 
+const config = {
+  apiKey: process.env.API_KEY,
+  authDomain: "finalboss-2993b.firebaseapp.com",
+  projectId: "finalboss-2993b",
+  storageBucket: "finalboss-2993b.appspot.com",
+  messagingSenderId: "181778738338"
+};
+
+firebase.initializeApp(config);
 
 class App extends Component {
   render() {
@@ -24,6 +37,7 @@ class App extends Component {
             <PrivateRoute path="/donate" component={Donate} />
             <PrivateRoute path="/private" component={Private} />
             <PrivateRoute path="/collections" component={Collections} />
+            <PrivateRoute path="/prueba" component={Profile} />
           </Switch>
         </div>
       </AuthProvider>

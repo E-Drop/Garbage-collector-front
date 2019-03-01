@@ -19,6 +19,7 @@ export const withAuth = (Comp) => {
               logout={authStore.logout}
               login={authStore.login}
               signup={authStore.signup}
+              update={authStore.update}
               {...this.props} />
           }}
         </Consumer>
@@ -50,6 +51,13 @@ export default class AuthProvider extends Component {
         });
       })
       .catch( error => console.log(error))
+  }
+
+  updateUserState = (user) => {
+    return authService.updateProfile(user)
+    .then((user) => {
+      this.setUser(user);
+    })
   }
 
   loginUser = (body) => {
@@ -100,6 +108,7 @@ export default class AuthProvider extends Component {
               logout: this.logoutUser, 
               login: this.loginUser,
               signup: this.signupUser,
+              update: this.updateUserState,
             }}>
             {children}
           </Provider>    
