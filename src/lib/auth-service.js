@@ -3,7 +3,7 @@ import axios from 'axios';
 class AuthService {
   constructor() {
     this.auth = axios.create({
-      baseURL: 'http://localhost:5000/auth',
+      baseURL: `${process.env.REACT_APP_API_URL}/auth`,
       withCredentials: true
     })
   }
@@ -17,6 +17,11 @@ class AuthService {
   updateProfile(user) {
     const { id ,username, location, imageURL } = user;
     return this.auth.post('/update', { id , username, location, imageURL })
+      .then(({ data }) => data);
+  }
+  
+  updateHome(id, home) {
+    return this.auth.post('/homeupdate', { id , home })
       .then(({ data }) => data);
   }
 

@@ -11,7 +11,7 @@ export const withAuth = (Comp) => {
   return class WithAuth extends Component {
     render() {
       return (
-        <Consumer>
+        <Consumer> 
           {(authStore) => {
             return <Comp
               isLogged={authStore.isLogged}
@@ -19,8 +19,13 @@ export const withAuth = (Comp) => {
               logout={authStore.logout}
               login={authStore.login}
               signup={authStore.signup}
-              update={authStore.update}
+              update={authStore.updateProvider}
+              home={authStore.updateHome}
               {...this.props} />
+              // here you specifies the name of props on your consumer, and wich actions of
+              // provider execute, for example update, is calling to updateProvider function
+              // updateProvider in provider is calling updateUserState.
+              // updateUserState is calling to updateProfile in auth-service and updating state in provider
           }}
         </Consumer>
       )
@@ -32,6 +37,7 @@ export default class AuthProvider extends Component {
   state = {
     isLogged: false,
     user: {},
+    homelocation: "",
     status: 'loading'
   }
 
@@ -57,6 +63,15 @@ export default class AuthProvider extends Component {
     return authService.updateProfile(user)
     .then((user) => {
       this.setUser(user);
+    })
+  }
+  updateUserHome = (id, home) => {
+    return authService.updateHome(id, home)
+    .then((user) => {
+      this.setState({
+        homelocation: user.home
+      })
+      return user;
     })
   }
 
@@ -86,7 +101,7 @@ export default class AuthProvider extends Component {
         })
       })
       .catch((error) => {
-        this.setState({ 
+        this.setState({
           isLogged: false,
           user: {},
           status: 'loaded'
@@ -108,10 +123,11 @@ export default class AuthProvider extends Component {
               logout: this.logoutUser, 
               login: this.loginUser,
               signup: this.signupUser,
-              update: this.updateUserState,
+              updateProvider: this.updateUserState,
+              updateHome: this.updateUserHome,
             }}>
             {children}
-          </Provider>    
+          </Provider>
         );
     }
   }

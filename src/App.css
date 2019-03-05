@@ -14,3 +14,190 @@ div {
     align-items: center;
     flex-direction: column
 }
+
+/* donations page start */
+
+.donation-form-wrapper {
+    text-align: center;
+}
+
+.donation-form-wrapper > * {
+    margin-bottom: 40px;
+}
+
+.donation-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.donation-box {
+    min-width: 150px;
+    height: 220px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+.donation-box:first-child .donation-type-image {
+    height: 120px;
+    width: 100px;
+    margin: 10px;
+    margin-top: 60px;
+}
+.donation-type-image {
+    height: 150px;
+    width: 150px;
+    background-size: cover;
+}
+
+.buttons-control {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.buttons-control > p {
+    margin: 0px;
+    font-size:2.75rem;
+}
+
+.button-add {
+    width: 30px; 
+    height: 30px;
+    background-size: cover;
+    background-color: white;
+    padding:0;
+    border:0;
+    margin:0;
+    border-radius: 5px;
+}
+
+.button-add:hover {
+    background-color: #06fe06;
+}
+
+.button-delete {
+    width: 30px; 
+    height: 30px;
+    background-size: cover;
+    background-color: white;
+    padding:0;
+    border:0;
+    margin:0;
+    border-radius: 5px;
+}
+
+.button-delete:hover {
+    background-color: #ff0000;
+}
+/* donations page end */
+
+/* collection item component start */
+
+.collection-item {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.collection-item .donation-type-image-bottle {
+    width: 75px;
+    height: 73px;
+    background-size: cover;
+}
+
+.collection-item div > p {
+    margin: 0;
+}
+
+.garbage-collection-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.garbage-collection-container div:first-child {
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.collection-item .donation-type-image-tin {
+    height: 50px;
+    width: 50px;
+    background-size: cover;
+}
+/* collection item component end */
+
+/* navbar item component start */
+
+.navbar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navbar .image-container {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-size: cover;
+    border: 0;
+}
+
+.navbar > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 150px;
+}
+.geocoder-icon, .geocoder-pin-right {
+    display: none;
+}
+.mapboxgl-ctrl-top-right {
+    background: rgba(255,255,255,0.7);
+    min-width: 360px;
+    height: 100%;
+}
+.suggestions {
+    background: rgba(255,255,255,0.7);
+    padding: 0px;
+}
+
+.suggestions li {
+    list-style: none;
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+.suggestions li:hover {
+    background-color: rgba(244,242,242, .8);
+}
+
+.map-button {
+    padding: 10px 50px;
+    background-color: #3f51b5;
+    color: white;
+}
+
+#map{
+    position: absolute;
+    width: 100vw;
+    height: 80vh;
+    margin-top: 10vh;
+  }
+
+.container {
+    width: 100%;
+}
+.MuiToolbar-root-47, .jss47, .jss9 {
+    flex-direction: row;
+}
+
+.Navbar-sectionDesktop-9 {
+    flex-direction: row;
+}

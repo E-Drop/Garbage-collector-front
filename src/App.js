@@ -3,12 +3,14 @@ import {Switch} from 'react-router-dom'
 import PrivateRoute from './components/PrivateRoute';
 import AnonRoute from './components/AnonRoute';
 import Navbar from './components/Navbar';
+import Map from './components/Map';
 import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Donate from './pages/Donate';
 import Collections from './pages/Collections';
 import AuthProvider from './components/AuthProvider';
+import Demo from './components/Demo';
 import firebase from 'firebase';
 import Profile from './pages/Profile';
 import './App.css';
@@ -29,15 +31,16 @@ class App extends Component {
     return (
       <AuthProvider>
         <div className="container">
-          <h1>Basic React Authentication</h1>
           <Navbar data='data' />
           <Switch>
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
+            <PrivateRoute path="/profile" component={Profile} />
+            <PrivateRoute path="/geoloco" component={Demo} />
+            <PrivateRoute path="/map" component={Map} />
             <PrivateRoute path="/donate" component={Donate} />
-            <PrivateRoute path="/private" component={Private} />
             <PrivateRoute path="/collections" component={Collections} />
-            <PrivateRoute path="/prueba" component={Profile} />
+            <PrivateRoute path="/" component={Private} />
           </Switch>
         </div>
       </AuthProvider>

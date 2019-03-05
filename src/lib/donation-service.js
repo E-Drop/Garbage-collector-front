@@ -3,15 +3,15 @@ import axios from 'axios';
 class DonationService {
   constructor() {
     this.consulta = axios.create({
-      baseURL: 'http://localhost:5000',
+      baseURL: process.env.REACT_APP_API_URL,
       withCredentials: true
     })
   }
 
   donate(data) {
-    const { username, name, number, location } = data;
+    const { username, tinsnumber, bottlesnumber, location } = data;
 
-    return this.consulta.post('/donate', {username, name, number, location})
+    return this.consulta.post('/donate', {username, tinsnumber, bottlesnumber, location})
       .then(({ data }) => data);
   }
 }

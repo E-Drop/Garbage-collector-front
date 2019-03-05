@@ -14,11 +14,16 @@ class CollectionsItem extends Component {
   }
 
   render() {
-    const { username, name, number, location } = this.props.data;
+    const tin = '../../img/can.svg';
+    const bottle = '../../img/bottles.svg';
+    const { username, tinsnumber, bottlesnumber, location } = this.props.data;
     return (
-            <div>
+            <div className="collection-item">
                 <p>{username} - {location}</p>
-                <p>{name} - {number}</p>
+                <div className="garbage-collection-container">
+                  {tinsnumber > 0 && <div><p className="donation-type-image-tin" style={{backgroundImage:`url(${tin})`}}></p><p>{tinsnumber}</p></div>}
+                  {bottlesnumber > 0 && <div><p className="donation-type-image-bottle" style={{backgroundImage:`url(${bottle})`}}></p><p>{bottlesnumber}</p></div>}
+                </div>
                 <button onClick={this.handleClick} >Reservar</button>
             </div>
     )
